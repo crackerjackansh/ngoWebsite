@@ -1,0 +1,35 @@
+<%- include("partials/header") -%>
+
+    <%- include("partials/sidebar") -%>
+                <div class="table-responsive">
+                    <table class="table m-0 p-0">
+                        <tr id="blogs" class="bg-dark">
+                            <th scope="row"><i class="fa fa-chevron-right"></i></th>
+                            <td colspan="2">View Blogs</td>
+                            
+                            <td><a href="/admin/blogs/new" class="btn btn-primary">New</a></td>
+                        </tr>
+                        <!-- blogs list -->
+                        <% blogs.forEach(function(blog){ %>
+                        <tr class="table-primary">
+                            <th scope="row"><%= blog.title %></th>
+                            <td><a href="/admin/blogs/<%= blog._id %>" class="btn btn-primary">Show</a></td>
+                            <td><a href="/admin/blogs/<%= blog._id %>/edit" class="btn btn-primary">Edit</a></td>
+                            <td><form id="delete" action="/admin/blogs/<%= blog._id %>/<%= blog.image_id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form></td>
+                        </tr>
+                        <% }); %>
+                        
+                    </table>
+                </div>
+                
+                
+                   
+            </div>
+        </div>
+
+    </div>
+    
+    
+<%- include("partials/footer") -%>

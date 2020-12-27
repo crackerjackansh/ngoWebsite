@@ -1,0 +1,47 @@
+<%- include("partials/header") -%>
+
+    <%- include("partials/sidebar") -%>
+                <div class="table-responsive">
+                    <table class="table  m-0 p-0">
+                        <!-- internships -->
+                        
+                        <tr class="bg-dark text-light">
+                            <th scope="row" class="text-light"><i class="fa fa-chevron-right"></i></th>
+                            <td colspan="2">View Internships</td>
+                            
+                            <td><a href="/admin/internships/new" class="btn btn-primary">New</a></td>
+                        </tr>
+                        <!-- internships list -->
+                        <% internships.forEach(function(internship){ %>
+                        <tr class="table-primary ">
+                            <th scope="row"><%= internship.title %></th>
+                            <td><a href="/admin/internships/<%= internship._id %>" class="btn btn-primary">Show</a></td>
+                            <td><a href="/admin/internships/<%= internship._id %>/edit" class="btn btn-primary">Edit</a></td>
+                            <td><form id="delete" action="/admin/internships/<%= internship._id %>/<%= internship.image_id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form></td>
+                        </tr>
+                        <% }); %>
+                    </table>
+                </div>
+                
+                
+            </div>
+        
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+<%- include("partials/footer") -%>

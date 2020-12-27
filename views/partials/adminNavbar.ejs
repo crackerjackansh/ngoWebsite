@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href="/libs/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<script src="/libs/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top py-1" id="navbarModify">
+        <div class="container-fluid">
+            <!-- navbar header -->
+                <div class="navbar-header">
+                    <!-- navbar logo -->
+                    <img src="logo/logo.png" id="logo" alt="WayForLife">
+                    <!-- navbar logo name -->
+                    <a class="navbar-brand py-0" id="logo-name" href="/"><strong>WayForLife</strong></a>
+                </div>
+                <!-- navbar toggle button -->
+                <button class="navbar-toggler collapsed border-0" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                    <span class="icon">
+                        <i class="fas fa-bars"></i>
+                    </span>
+                    <span><i class="fa fa-times fa-lg close-icon py-1"></i></span>
+                </button>
+            
+            <div class="collapse navbar-collapse" id="collapsingNavbar">
+                <ul class="navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+
+                        <% }else{ %>
+                            <li class="nav-item">
+                                <a href="#">Signed In As <strong><%= currentUser.username %></strong></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                        <% } %>
+                    
+                </ul>
+            </div>
+              
+    
+        </div>
+    </nav>

@@ -1,0 +1,37 @@
+<%- include("partials/header") -%>
+
+    <%- include("partials/sidebar") -%>
+                <div class="table-responsive">
+                    <table class="table  m-0 p-0">
+                        <!-- our activities -->
+                        <tr id="activities" class="bg-dark text-light">
+                            <th scope="row"><i class="fa fa-chevron-right"></i></th>
+                            <td colspan="2">View Our Activities</td>
+                            
+                            <td><a href="/admin/ourActivities/new" class="btn btn-primary">New</a></td>
+                        </tr>
+                        <!--  our activities list -->
+                        <% activities.forEach(function(activity){ %>
+                        <tr class="table-primary">
+                            <th scope="row"><%= activity.title %></th>
+                            <td><a href="/admin/ourActivities/<%= activity._id %>" class="btn btn-primary">Show</a></td>
+                            <td><a href="/admin/ourActivities/<%= activity._id %>/edit" class="btn btn-primary">Edit</a></td>
+                            <td><form id="delete" action="/admin/ourActivities/<%= activity._id %>/<%= activity.image_id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form></td>
+                        </tr>
+                        <% }); %>
+                    </table>
+                </div>
+                
+                
+            </div>
+        
+        </div>
+
+    </div>
+
+
+
+
+<%- include("partials/footer") -%>

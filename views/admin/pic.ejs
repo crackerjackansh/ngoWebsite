@@ -1,0 +1,60 @@
+<%- include("partials/header") -%>
+
+    <%- include("partials/sidebar") -%>
+                <div class="table-responsive">
+                    <table class="table m-0 p-0">
+                        <!-- gallery -->
+                       
+                        <tr class="bg-dark text-light">
+                            <th scope="row"><i class="fa fa-chevron-right"></i></th>
+                            <td colspan="3">View Images</td>
+                            
+                            <td><a href="/admin/pic/new" class="btn btn-primary">New</a></td>
+                        </tr>
+                        <!-- gallery list -->
+                        <% pics.forEach(function(pic){ %>
+                        <tr class="table-primary">
+                            <th scope="row"><%= pic.title %></th>
+                            
+                            <td>
+                                <% if(files){ %>
+                                    <% files.forEach(function(file) { %>
+                                        <% if(file.filename==pic.image) { %>
+                                          <% if(file.isImage) { %>
+                                            <img src="/image/<%= file.filename %>" alt="" class="w-25">
+                                            <% } else { %>
+                                                <%= file.filename %>
+                                                  <% } %>
+                                          <% } %>
+                                        <% }) %>
+                                          <% } else { %>
+                                            <p>No files to show</p>
+                                            <% } %>	
+                            </td>
+                            <td><a href="/admin/pic/<%= pic._id %>" class="btn btn-primary">Show</a></td>
+                            <td><a href="/admin/pic/<%= pic._id %>/edit" class="btn btn-primary">Edit</a></td>
+                            <td><form id="delete" action="/admin/pic/<%= pic._id %>/<%= pic.image_id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form></td>
+                        </tr>
+                        <% }); %>
+                    </table>
+                </div>
+                
+                
+            </div>
+        
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    
+
+
+<%- include("partials/footer") -%>

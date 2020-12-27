@@ -1,0 +1,402 @@
+<%- include("partials/header") -%>
+
+    <div class="row my-5">
+        <div class="container">
+            <div class="container card my-5">
+                <% if(page=="blogs"){ %>   
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/blogs/<%= blog._id %>/<%= blog.image_id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="blog[title]" placeholder="Enter Title" value="<%= blog.title %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <% if(files){ %>
+                                    
+                                    <% files.forEach(function(file) { %>
+                                      
+                                        <% if(file.filename==blog.image) { %>
+                                            
+                                          <% if(file.isImage) { %>
+                                            <div class="card card-body mb-3">
+                                    
+                                            <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                                            <% } else { %>
+                                              <%= file.filename %>
+                                                <% } %>
+                                            
+                                            </div>
+                                        <% } %>
+                                        
+                                      <% }) %>
+                                      <span id="deleteButton">Update Image</span>
+                                      
+                                        <div class="custom-file mt-3 mb-5 deleteButton">
+                                            <p>For updating Image , Select New Image</p>
+                                            <input type="file" name="file" id="file">
+                                            <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                        </div>
+                                       
+                                        <% } else { %>
+                                          <p>No files to show</p>
+                                          <% } %>
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content" class="form-control" name="blog[body]" id="content"><%= blog.body %></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="pic"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/pic/<%= pic._id %>/<%= pic.image_id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="pic[title]" placeholder="Enter Title" value="<%= pic.title %>">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <% if(files){ %>
+                                    
+                                    <% files.forEach(function(file) { %>
+                                      
+                                        <% if(file.filename==pic.image) { %>
+                                            
+                                          <% if(file.isImage) { %>
+                                            <div class="card card-body mb-3">
+                                    
+                                            <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                                            <% } else { %>
+                                              <%= file.filename %>
+                                                <% } %>
+                                            
+                                            </div>
+                                            
+                                        <% } %>
+                                      
+                                      <% }) %>
+                                      <span id="deleteButton">Update Image</span>
+                                      
+                                        <div class="custom-file mt-3 mb-5 deleteButton">
+                                            <p>For updating Image , Select New Image</p>
+                                            <input type="file" name="file" id="file">
+                                            <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                        </div>
+                                       
+                                        <% } else { %>
+                                          <p>No files to show</p>
+                                          <% } %>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="vid"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/vid/<%= vid._id %>/<%= vid.image_id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                        
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="vid[title]" placeholder="Enter Title" value="<%= vid.title %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Video Thumbnail</label>
+                            <div class="col-sm-10">
+                                <% if(files){ %>
+                                    
+                                    <% files.forEach(function(file) { %>
+                                      
+                                        <% if(file.filename==vid.thumbnail) { %>
+                                            
+                                          <% if(file.isImage) { %>
+                                            <div class="card card-body mb-3">
+                                    
+                                            <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                                            <% } else { %>
+                                              <%= file.filename %>
+                                                <% } %>
+                                            
+                                            </div>
+                                            
+                                        <% } %>
+                                      
+                                      <% }) %>
+                                      <span id="deleteButton">Update Thumbnail</span>
+                                      
+                                        <div class="custom-file mt-3 mb-5 deleteButton">
+                                            <p>For updating Thumbnail , Select New Thumbnail</p>
+                                            <input type="file" name="file" id="file">
+                                            <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                        </div>
+                                       
+                                        <% } else { %>
+                                          <p>No files to show</p>
+                                          <% } %>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Video</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="vid[video]" class="form-control" placeholder="Enter Video link" value="<%= vid.video %>">
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="internships"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/internships/<%= internship._id %>/<%= internship.image_id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Internship Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="internship[title]"  placeholder="Enter Title" value="<%= internship.title %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <% if(files){ %>
+                                    
+                                    <% files.forEach(function(file) { %>
+                                      
+                                        <% if(file.filename==internship.image) { %>
+                                            
+                                          <% if(file.isImage) { %>
+                                            <div class="card card-body mb-3">
+                                    
+                                            <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                                            <% } else { %>
+                                              <%= file.filename %>
+                                                <% } %>
+                                            
+                                            </div>
+                                            
+                                        <% } %>
+                                      
+                                      <% }) %>
+                                      <span id="deleteButton">Update Image</span>
+                                      
+                                        <div class="custom-file mt-3 mb-5 deleteButton">
+                                            <p>For updating Image , Select New Image</p>
+                                            <input type="file" name="file" id="file">
+                                        </div>
+                                       
+                                        <% } else { %>
+                                          <p>No files to show</p>
+                                          <% } %>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">From</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="internship[startDate]" placeholder="Enter Starting Date" value="<%= internship.startDate %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">For</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="internship[timeLimit]" placeholder="Enter time limit" value="<%= internship.timeLimit %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Apply Link</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="internship[applyLink]" placeholder="Enter link" value="<%= internship.applyLink %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content (0-500 characters)" class="form-control"  name="internship[body]" id="content"><%= internship.body %></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="ourActivities"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/ourActivities/<%= activity._id %>/<%= activity.image_id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  name="activity[title]" placeholder="Enter Title" value="<%= activity.title %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <% if(files){ %>
+                                    
+                                    <% files.forEach(function(file) { %>
+                                      
+                                        <% if(file.filename==activity.image) { %>
+                                            
+                                          <% if(file.isImage) { %>
+                                            <div class="card card-body mb-3">
+                                    
+                                            <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                                            <% } else { %>
+                                              <%= file.filename %>
+                                                <% } %>
+                                            
+                                            </div>
+                                        <% } %>
+                                       
+                                      <% }) %>
+                                      <span id="deleteButton">Update Image</span>
+                                      
+                                        <div class="custom-file mt-3 mb-5 deleteButton">
+                                            <p>For updating Image , Select New Image</p>
+                                            <input type="file" name="file" id="file">
+                                            <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                        </div>
+                                       
+                                        <% } else { %>
+                                          <p>No files to show</p>
+                                          <% } %>
+                                
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="activity[location]" class="form-control" placeholder="Enter Location" value="<%= activity.location %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Activity Done On</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="activity[doneDate]" placeholder="Enter Date" value="<%= activity.doneDate %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content" class="form-control" name="activity[body]" id="content"><%= activity.body %></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="upcoming"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/upcoming/<%= upcoming._id %>/<%= upcoming.image_id %>?_method=PUT" method="POST"  enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="upcomingActivity[title]" placeholder="Enter Title" value="<%= upcoming.title %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image (Optional)</label>
+                            <div class="col-sm-10">
+                                <% if(files){ %>
+                                    
+                                    <% files.forEach(function(file) { %>
+                                      
+                                        <% if(file.filename==upcoming.image) { %>
+                                            
+                                          <% if(file.isImage) { %>
+                                            <div class="card card-body mb-3">
+                                    
+                                            <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                                            <% } else { %>
+                                              <%= file.filename %>
+                                                <% } %>
+                                            
+                                            </div>
+                                        <% } %>
+                                        
+                                      <% }) %>
+                                      <span id="deleteButton">Update Image</span>
+                                      
+                                        <div class="custom-file mt-3 mb-5 deleteButton">
+                                            <p>For updating Image , Select New Image</p>
+                                            <input type="file" name="file" id="file">
+                                            <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                        </div>
+                                        <div class="mt-3">
+                                            <p class="text-light bg-primary px-2">If you have not chosen any image , default icon will be added automatically</p>
+                                        </div>
+                                        <% } else { %>
+                                          <p>No files to show</p>
+                                          <% } %>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="upcomingActivity[location]" class="form-control" placeholder="Enter Location" value="<%= upcoming.location %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Join Link</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="upcomingActivity[joinLink]" placeholder="Enter link" value="<%= upcoming.joinLink %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Activity on</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" name="upcomingActivity[date]" placeholder="Enter Date" value="<%= upcoming.date %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content" class="form-control" name="upcomingActivity[body]" id="content"><%= upcoming.body %></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+            </div>
+    
+        </div>
+    </div>
+    
+    
+    
+    
+<%- include("partials/footer") -%>

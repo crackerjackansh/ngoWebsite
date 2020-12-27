@@ -1,0 +1,96 @@
+<%- include("partials/header") -%>
+
+	<body class="blogPage">
+		
+        <%- include("partials/navbar") -%>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Blogs</h1>
+            </div>
+  
+      
+            <div class="blogs">
+                <% blogs.forEach(function(blog){ %>
+                    <div class="blog-post">
+                        <div class="blog-post_img">
+                            <% if(files){ %>
+                                <% files.forEach(function(file) { %>
+                                
+                                <% if(file.filename==blog.image) { %>
+                                    <% if(file.isImage) { %>
+                                        <img src="image/<%= file.filename %>" alt="">
+                                        <% } else { %>
+                                            <%= file.filename %>
+                                            <% } %>
+                                        <% } %>
+                                    <% }) %>
+                                        <% } else { %>
+                                        <p>No files to show</p>
+                                        <% } %>
+                              
+                        </div>
+                        <div class="blog-post_info">
+                            <div class="blog-post_date">
+                                <!-- <span>Sunday</span> -->
+                                <span><%= blog.created.toDateString().replace(' ',' , ') %></span>
+                            </div>
+                            <h1 class="blog-post_title"><%= blog.title %></h1>
+                            <p class="blog-post_text"><%= blog.body.substring(0,125) %>...</p>
+                            <a href="#" class="blog-post_cta"  data-toggle="modal" data-target="#<%= blog._id %>">Read More</a>
+                        </div>
+                    </div>
+                <% }); %>
+
+            </div>
+        </div>
+<% blogs.forEach(function(blog){ %>
+	<!-- Event Modal -->
+		<div class="modal eventModal fade" id="<%= blog._id %>" tabindex="-1" role="dialog" aria-labelledby="<%= blog._id %>" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="<%= blog._id %>"><%= blog.title %></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- <h1 class="text-center my-2">Title</h1> -->
+                    <% if(files){ %>
+                        <% files.forEach(function(file) { %>
+                          
+                            <% if(file.filename==blog.image) { %>
+                              <% if(file.isImage) { %>
+                                <img class="card-img-top img-thumbnail border-0" src="/image/<%= file.filename %>" alt="Card image cap">
+                                <% } else { %>
+                                    <%= file.filename %>
+                                      <% } %>
+                              <% } %>
+                            <% }) %>
+                              <% } else { %>
+                                <p>No files to show</p>
+                                <% } %>	
+					
+					<div class="card-body">
+					  <div class="card-text">
+						<p class="d-flex justify-content-left">
+						  
+						  <span ><i class="far fa-calendar-alt"></i>&nbsp;<%= blog.created.toDateString().replace(' ',' , ') %></span>
+						</p>
+						<p class="text-justify mt-3">
+							<%= blog.body%>
+						</p>
+					  </div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					
+				</div>
+			</div>
+			</div>
+		</div>
+<% }); %>
+
+
+<%- include("partials/footer") -%>

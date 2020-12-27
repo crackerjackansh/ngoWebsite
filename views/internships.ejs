@@ -1,0 +1,54 @@
+<%- include("partials/header") -%>
+
+	<body class="internshipsPage">
+		
+        <%- include("partials/navbar") -%>
+        <div class="container">
+                <div class="jumbotron">
+                    <h1>Internships</h1>
+                </div>
+           
+    
+      
+        <div class="blogs">
+            <% internships.forEach(function(internship){ %>
+                <div class="blog-post">
+                    <span><i class="fa fa-calender" ></i></span>
+                    <div class="blog-post_img">
+                        <% if(files){ %>
+                            <% files.forEach(function(file) { %>
+                              
+                              <% if(file.filename==internship.image) { %>
+                                <% if(file.isImage) { %>
+                                       
+                                            <img src="image/<%= file.filename %>" alt="">
+                                        
+                                    <% } else { %>
+                                        <%= file.filename %>
+                                          <% } %>
+                                      <% } %>
+                                  <% }) %>
+                                      <% } else { %>
+                                      <p>No files to show</p>
+                                      <% } %>
+                
+                    </div>
+                    <div class="blog-post_info">
+                        <div class="blog-post_date">
+                            <span><strong>From : </strong><%= new Date(internship.startDate).toDateString().replace(' ',' , ')  %></span>
+                            <span><strong>For : </strong><%= internship.timeLimit %></span>
+                        </div>
+                        <h1 class="blog-post_title"><%= internship.title %></h1>
+                        <p class="blog-post_text">
+                            <%= internship.body.substring(0,500) %>
+                        </p>
+                        <a href="<%= internship.applyLink %>" class="blog-post_cta">Apply</a>
+                    </div>
+                </div>
+            <% }); %>
+    
+        </div>
+        </div>
+
+
+<%- include("partials/footer") -%>

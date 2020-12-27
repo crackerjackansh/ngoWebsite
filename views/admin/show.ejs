@@ -1,0 +1,301 @@
+<%- include("partials/header") -%>
+
+  <%- include("partials/sidebar") -%>
+        <% if(page=="blogs"){ %>   
+            <div class="container p-3">
+              <h1> <%= blog.title %></h1>
+              <% if(files){ %>
+                <% files.forEach(function(file) { %>
+                  
+                    <% if(file.filename==blog.image) { %>
+                      <% if(file.isImage) { %>
+                        <div class="my-3 text-center">
+                
+                        <img src="/image/<%= file.filename %>" class="w-50 card-img-top " alt="">
+                        <% } else { %>
+                          <%= file.filename %>
+                            <% } %>
+                            
+                        </div>
+                    <% } %>
+                  
+                  <% }) %>
+                    <% } else { %>
+                      <p>No files to show</p>
+                      <% } %>
+                <div class="card-body">
+                  <div class="card-text">
+                    <p class="d-flex justify-content-between">
+                    <span ><i class="far fa-calendar-alt"></i>&nbsp;<%= blog.created.toDateString() %></span>
+                    </p>
+                    <p class="text-justify mt-3">
+                      <%= blog.body %>
+                    </p>
+                  </div>
+                  <div class="mt-5">
+                    <div class="d-flex justify-content-left">
+                      <span class="mr-3"><a href="/admin/blogs/<%= blog._id %>/edit" class="btn btn-primary">Edit</a></span>
+                      <span class="mr-3"><form id="delete" action="/admin/blogs/<%= blog._id %>/<%= blog.image_id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form></span>
+                      <span class="mr-3">
+                        <a href="/admin/blogs" class="btn btn-success">Back</a>
+                      </span>
+                        
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+            
+            
+            
+        <% } %>
+        <% if(page=="pic"){ %>
+            <div class="container p-3">
+              <h1><%= pic.title %></h1>
+              <% if(files){ %>
+                <% files.forEach(function(file) { %>
+                  
+                    <% if(file.filename==pic.image) { %>
+                      <% if(file.isImage) { %>
+                        <div class="my-3 text-center">
+                
+                        <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                        <% } else { %>
+                          <%= file.filename %>
+                            <% } %>
+                            
+                        </div>
+                    <% } %>
+                  
+                  <% }) %>
+                    <% } else { %>
+                      <p>No files to show</p>
+                      <% } %>
+
+
+                        <div class="mt-5">
+                          <div class="d-flex justify-content-left">
+                            <span class="mr-3"><a href="/admin/pic/<%= pic._id %>/edit" class="btn btn-primary">Edit</a></span>
+                            <span class="mr-3"><form id="delete" action="/admin/pic/<%= pic._id %>/<%= pic.image_id %>?_method=DELETE" method="POST">
+                              <button class="btn btn-danger">Delete</button>
+                          </form></span>
+                            <span class="mr-3">
+                              <a href="/admin/pic" class="btn btn-success">Back</a>
+                            </span>
+                              
+                          </div>
+                        </div>
+            </div>
+               
+            
+        <% } %>
+        <% if(page=="vid"){ %>
+          <div class="container p-3">
+                      <h1><%= vid.title %></h1>
+                      <div class="my-3 text-center">
+              
+                      <!-- <video src="<%= vid.video %>"></video> -->
+                      <video width="400" height="350" controls poster="<%= vid.thumbnail %>"> 
+                        <source src="<%= vid.video %>" type="video/mp4"> 
+                      </video> 
+                      
+                      </div>
+                      <div class="card-body">
+                        <div>
+                          <span><strong>Thumbnail:</strong></span>
+                          <% if(files){ %>
+                            <% files.forEach(function(file) { %>
+                              
+                                <% if(file.filename==vid.thumbnail) { %>
+                                  <% if(file.isImage) { %>
+                                    <div class="my-3 text-center">
+                            
+                                    <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                                    <% } else { %>
+                                      <%= file.filename %>
+                                        <% } %>
+                                        
+                                    </div>
+                                <% } %>
+                              
+                              <% }) %>
+                                <% } else { %>
+                                  <p>No files to show</p>
+                                  <% } %>
+                        </div>
+                        <span><strong>Link: </strong></span><p><%= vid.video %></p>
+                      </div>
+                      <div class="mt-5">
+                        <div class="d-flex justify-content-left">
+                          <span class="mr-3"><a href="/admin/vid/<%= vid._id %>/edit" class="btn btn-primary">Edit</a></span>
+                          <span class="mr-3"><form id="delete" action="/admin/vid/<%= vid._id %>/<%= vid.image_id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form></span>
+                          <span class="mr-3">
+                            <a href="/admin/vid" class="btn btn-success">Back</a>
+                          </span>
+                            
+                        </div>
+                      </div>
+          <div>
+           
+      <% } %>
+        <% if(page=="internships"){ %>
+            <div class="container p-3">
+              <h1><%= internship.title %></h1>
+              <% if(files){ %>
+                <% files.forEach(function(file) { %>
+                  
+                    <% if(file.filename==internship.image) { %>
+                      <% if(file.isImage) { %>
+                        <div class="my-3 text-center">
+                
+                        <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                        <% } else { %>
+                          <%= file.filename %>
+                            <% } %>
+                            
+                        </div>
+                    <% } %>
+                  
+                  <% }) %>
+                    <% } else { %>
+                      <p>No files to show</p>
+                      <% } %>
+                <div class="card-body">
+                  <div class="card-text">
+                    <p class="d-flex justify-content-between">
+                    <span><i class="far fa-calendar-alt"></i>&nbsp;<%= internship.startDate %></span>
+                    <span ><strong>For :</strong>&nbsp;<%= internship.timeLimit %></span>
+                    </p>
+                    <p><%= internship.applyLink %></p>
+                    <p class="text-justify mt-3">
+                      <%= internship.body %>
+                    </p>
+                  </div>
+                  <div class="mt-5">
+                    <div class="d-flex justify-content-left">
+                      <span class="mr-3"><a href="/admin/internships/<%= internship._id %>/edit" class="btn btn-primary">Edit</a></span>
+                      <span class="mr-3"><form id="delete" action="/admin/blogs/<%= internship._id %>/<%= internship.image_id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form></span>
+                      <span class="mr-3">
+                        <a href="/admin/internships" class="btn btn-success">Back</a>
+                      </span>
+                        
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+            
+        <% } %>
+        <% if(page=="ourActivities"){ %>
+            <div class="container p-3">
+              <h1><%= activity.title %></h1>
+              <% if(files){ %>
+                <% files.forEach(function(file) { %>
+                  
+                    <% if(file.filename==activity.image) { %>
+                      <% if(file.isImage) { %>
+                        <div class="my-3 text-center">
+                
+                        <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                        <% } else { %>
+                          <%= file.filename %>
+                            <% } %>
+                            
+                        </div>
+                    <% } %>
+                  
+                  <% }) %>
+                    <% } else { %>
+                      <p>No files to show</p>
+                      <% } %>
+                <div class="card-body">
+					<div class="card-text">
+					  <p class="d-flex justify-content-between">
+						<span><i class="fas fa-map-marker-alt"></i>&nbsp;<%= activity.location %></span>
+						<span ><i class="far fa-calendar-alt"></i>&nbsp;<%= activity.doneDate %></span>
+					  </p>
+					  <p class="text-justify mt-3">
+						<%= activity.body %>
+					  </p>
+					</div>
+          </div>
+          <div class="mt-5">
+            <div class="d-flex justify-content-left">
+              <span class="mr-3"><a href="/admin/ourActivities/<%= activity._id %>/edit" class="btn btn-primary">Edit</a></span>
+              <span class="mr-3"><form id="delete" action="/admin/ourActivities/<%= activity._id %>/<%= activity.image_id %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button>
+            </form></span>
+              <span class="mr-3">
+                <a href="/admin/ourActivities" class="btn btn-success">Back</a>
+              </span>
+                
+            </div>
+          </div>
+          </div>
+            
+            
+        <% } %>
+        <% if(page=="upcoming"){ %>
+            <div class="container p-3">
+              <h1><%= upcoming.title %></h1>
+              <% if(files){ %>
+                <% files.forEach(function(file) { %>
+                  
+                    <% if(file.filename==upcoming.image) { %>
+                      <% if(file.isImage) { %>
+                        <div class="my-3 text-center">
+                
+                        <img src="/image/<%= file.filename %>" class="w-50 card-img-top" alt="">
+                        <% } else { %>
+                          <%= file.filename %>
+                            <% } %>
+                            
+                        </div>
+                    <% } %>
+                  
+                  <% }) %>
+                    <% } else { %>
+                      <p>No files to show</p>
+                      <% } %>
+                <div class="card-body">
+                    <div class="card-text">
+                      <p class="d-flex justify-content-between">
+                      <span><i class="fas fa-map-marker-alt"></i>&nbsp;<%= upcoming.location%></span>
+                      <span ><i class="far fa-calendar-alt"></i>&nbsp;<%= upcoming.date %></span>
+                      </p>
+                      <p class="text-justify mt-3">
+                      <%= upcoming.body %>
+                      </p>
+                    </div>
+				        </div>
+            </div>
+            <div class="mt-5">
+              <div class="d-flex justify-content-left">
+                <span class="mr-3"><a href="/admin/upcoming/<%= upcoming._id %>/edit" class="btn btn-primary">Edit</a></span>
+                <span class="mr-3"><form id="delete" action="/admin/upcoming/<%= upcoming._id %>/<%= upcoming.image_id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-danger">Delete</button>
+              </form></span>
+                <span class="mr-3">
+                  <a href="/admin/upcoming" class="btn btn-success">Back</a>
+                </span>
+                  
+              </div>
+            </div>
+            
+        <% } %>
+        
+        
+
+    </div>
+    </div>
+    </div>
+
+
+
+<%- include("partials/footer") -%>

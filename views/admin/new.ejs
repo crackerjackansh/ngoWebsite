@@ -1,0 +1,250 @@
+<%- include("partials/header") -%>
+
+    <div class="row m-5">
+        <div class="container card my-5">
+            
+                <% if(page=="blogs"){ %>   
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/blogs" method="POST" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="blog[title]" class="form-control" placeholder="Enter Title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <div class="custom-file mb-3">
+                                    <input type="file" name="file" id="file">
+                                    <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content"  name="blog[body]" class="form-control" id="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="pic"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/pic" method="POST" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="pic[title]" class="form-control" placeholder="Enter Title">
+                    
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <div class="custom-file mb-3">
+                                    <input type="file" name="file" id="file">
+                                    <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="vid"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/vid" method="POST" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="vid[title]" class="form-control" placeholder="Enter Title">
+                    
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Video Thumbnail</label>
+                            <div class="col-sm-10">
+                                <div class="custom-file mb-3">
+                                    <input type="file" name="file" id="file">
+                                    <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Video</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="vid[video]" class="form-control" placeholder="Enter video link">
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="internships"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/internships" method="POST" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Internship Title</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="internship[title]" class="form-control" placeholder="Enter Title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <div class="custom-file mb-3">
+                                    <input type="file" name="file" id="file">
+                                    <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">From</label>
+                            <div class="col-sm-10">
+                                <input type="date"  name="internship[startDate]" class="form-control" placeholder="Enter Starting Date">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">For</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="internship[timeLimit]" class="form-control" placeholder="Enter time limit">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Apply Link</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="internship[applyLink]" class="form-control" placeholder="Enter link">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content (0-500 characters)"  name="internship[body]" class="form-control" id="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="ourActivities"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/ourActivities" method="POST" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="activity[title]" class="form-control" placeholder="Enter Title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image</label>
+                            <div class="col-sm-10">
+                                <div class="custom-file mb-3">
+                                    <input type="file" name="file" id="file">
+                                    <!-- <label for="file" class="custom-file-label">Choose File</label> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="activity[location]" class="form-control" placeholder="Enter Location">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Activity Done On</label>
+                            <div class="col-sm-10">
+                                <input type="date"  name="activity[doneDate]" class="form-control" placeholder="Enter Date">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content"  name="activity[body]" class="form-control" id="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+                <% if(page=="upcoming"){ %>
+                    <h1 id="formHeading">Enter Details</h1>
+                    <form action="/admin/upcoming" method="POST" enctype="multipart/form-data">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="upcomingActivity[title]" class="form-control" placeholder="Enter Title">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Image (Optional)</label>
+                            <div class="col-sm-10">
+                                <div class="custom-file mb-3">
+                                    <input type="file" name="file" id="file">
+                                </div>
+                                <div>
+                                    <p class="text-light bg-primary px-2">If you have not chosen any image , default icon will be added automatically</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Location</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="upcomingActivity[location]" class="form-control" placeholder="Enter Location">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Join Link</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="upcomingActivity[joinLink]" class="form-control" placeholder="Enter link">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Activity on</label>
+                            <div class="col-sm-10">
+                                <input type="date"  name="upcomingActivity[date]" class="form-control" placeholder="Enter Date">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label">Content</label>
+                            <div class="col-sm-10">
+                                <textarea placeholder="Enter content"  name="upcomingActivity[body]" class="form-control" id="content"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="button">
+                            <div class="col-sm-10" >
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                <% } %>
+            
+    
+        </div>
+    </div>
+    
+    
+    
+    
+    
+<%- include("partials/footer") -%>

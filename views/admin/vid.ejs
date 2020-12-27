@@ -1,0 +1,44 @@
+<%- include("partials/header") -%>
+
+    <%- include("partials/sidebar") -%>
+                <div class="table-responsive">
+                    <table class="table  m-0 p-0">
+                        <!-- gallery -->
+                        
+                        <tr class="bg-dark text-light">
+                            <th scope="row"><i class="fa fa-chevron-right"></i></th>
+                            <td colspan="2">View Videos</td>
+                            
+                            <td><a href="/admin/vid/new" class="btn btn-primary">New</a></td>
+                        </tr>
+                        <!-- gallery list -->
+                        <% vids.forEach(function(vid){ %>
+                        <tr class="table-primary">
+                            <th scope="row"><%= vid.title %></th>
+                            <td><a href="/admin/vid/<%= vid._id %>" class="btn btn-primary">Show</a></td>
+                            <td><a href="/admin/vid/<%= vid._id %>/edit" class="btn btn-primary">Edit</a></td>
+                            <td><form id="delete" action="/admin/vid/<%= vid._id %>/<%= vid.image_id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form></td>
+                        </tr>
+                        <% }); %>
+                    </table>
+                </div>
+                
+                
+            </div>
+        
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    
+
+
+<%- include("partials/footer") -%>

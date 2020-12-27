@@ -1,0 +1,99 @@
+/* admin page */
+
+html,body{
+	overflow-x: hidden;
+}
+
+/* logo */
+#logo{
+    height: 2em;
+}
+
+
+/* nav */
+
+	/* hide close when burger shown */
+	.navbar-toggler.collapsed .close-icon {
+		display: none;
+	}
+
+	.navbar-toggler:not(.collapsed) .icon {
+		display: none;
+	}
+
+/* navbar toggler close icon */
+	.fa-times{
+		color: white;
+	}
+
+
+
+
+	/*form*/
+
+		/*form box*/
+
+		#space{
+			padding: 2em;
+			
+			margin-bottom: 2em;
+		}
+
+
+
+		/*form heading*/
+
+		#formHeading{
+			margin: 2rem auto;
+			
+			text-align: center;
+		}
+
+		/* content */
+		#content{
+			height: 20rem;
+			max-height: 20rem;
+		}
+		
+		/*submit button*/
+
+		#button{
+			text-align: center;
+			/* padding-left: 15%; */
+			 
+		}
+
+		/* additional features */
+		table i{
+			color: #fff;
+		}
+		#activities,
+		#upcoming,
+		#blogs,
+		#gallery,
+		#internships{
+			color: #fff;
+			
+		}
+
+		#deleteButton{
+			background: crimson;
+			color: #fff;
+			border-radius: 3px;
+			padding: 5px 10px;
+		}
+		#deleteButton:hover{
+			
+			cursor: pointer;
+		}
+
+		
+		.deleteButton{
+			display: none;
+		}
+
+		.container  li{
+			list-style: none;
+		}
+		
+		
