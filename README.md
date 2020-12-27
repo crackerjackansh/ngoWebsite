@@ -6,4 +6,5 @@ It has 2 parts:
 - Admin Panel : http://wayforlife-v6.herokuapp.com/admin
   
   Admin_username : wayforlife
+  
   Admin_password : 1way2for3life
